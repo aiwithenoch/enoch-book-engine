@@ -78,6 +78,20 @@
 .bb .photo figcaption{ margin-top:7px; font-size:13.5px; color:var(--muted); text-align:center; }
 .sheet.bb.snug .photo{ margin-top:2px; }
 
+/* A LOGO band for marks and lockups. Unlike a photo, a logo must never be cropped:
+   contain keeps the whole asset visible while the fixed band keeps page geometry stable. */
+.bb .logo{
+  flex:0 0 auto; display:flex; align-items:center; justify-content:center;
+  height:200px; margin:4px 0 0; padding:18px; overflow:hidden;
+  background:var(--card); border:1px solid var(--line); border-radius:14px;
+}
+.bb .logo img,
+.bb .logo svg{
+  display:block; width:auto; max-width:100%; height:auto; max-height:100%;
+  object-fit:contain;
+}
+.sheet.bb.snug .logo{ margin-top:2px; }
+
 /* ---- explainer card ---- */
 .bb .explain{
   background:var(--card); border:1px solid var(--line); border-radius:14px;

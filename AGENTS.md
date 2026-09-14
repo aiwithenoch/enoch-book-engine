@@ -29,6 +29,8 @@ before acknowledging the review.
    mistake, amber the thing protected, neutral the reader.
 7. Never invent a fact, a number, or a story for a page.
 8. Give every SVG `<text>` an explicit `fill`, or it can inherit its way to invisible.
+9. Put logos in a `.logo` band, not `.photo`; the logo band uses `contain` so the whole
+   mark remains visible. Review `[LOGO]` screenshots for padding and crop.
 
 **A new page** is one `<section class="sheet bb">` in the interior file, plus its title
 added to a part in `book.json`. Copy

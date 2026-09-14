@@ -109,10 +109,11 @@ write a page  ->  verify  ->  LOOK  ->  verify --ack-visual  ->  export
 - **`check` proves it fits.** Every page has to read `0 mm`. It also catches broken
   images and a stylesheet that failed to load.
 - **`visual-check` makes the review explicit.** It checks SVG bounds, card geometry,
-  label fit and screenshot presence, then stops until the agent opens the PNGs. The
+  label fit, logo containment and screenshot presence, then stops until the agent opens
+  the PNGs. The
   structural check cannot see overlap, a clipped label, a photo cropped through its
-  subject, or a diagram that confidently says the wrong thing. Open every listed PNG,
-  with extra attention to `[DIAGRAM]` pages.
+  subject, a logo cropped through its mark, or a diagram that confidently says the wrong
+  thing. Open every listed PNG, with extra attention to `[DIAGRAM]` and `[LOGO]` pages.
 - **Only you can check the voice.** Whether this sounds like you, whether the diagram
   says what you meant, whether this is the page you wanted. No tool has an opinion about
   that, so read every page before you publish it.

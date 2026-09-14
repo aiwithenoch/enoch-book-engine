@@ -4,6 +4,7 @@
    This is not a replacement for eyes. It checks the things a browser can prove
    before the agent opens the PNGs: screenshots exist, SVG text has explicit
    colours, labels stay inside the viewBox and cards in a row share alignment.
+   Logo assets are also checked against their contain frame.
    It then lists every block screenshot, with diagram pages called out.
 
    Usage:
@@ -86,8 +87,27 @@ try {
       return [...document.querySelectorAll('.sheet')].map((sheet, index) => {
         const isBlock = sheet.classList.contains('bb');
         const svg = sheet.querySelector('.diagram svg');
-        const base = { page: index + 1, title: titleOf(sheet), block: isBlock, diagram: Boolean(svg), issues: [] };
-        if (!svg) return base;
+        const logo = sheet.querySelector('.logo');
+        const base = { page: index + 1, title: titleOf(sheet), block: isBlock, diagram: Boolean(svg), logo: Boolean(logo), issues: [] };
+        const issues = [];
+
+        if (logo) {
+          const logoRect = logo.getBoundingClientRect();
+          const assets = [...logo.querySelectorAll('img,svg')];
+          if (!assets.length) issues.push('logo frame has no img or svg asset');
+          for (const asset of assets) {
+            if (asset.tagName.toLowerCase() === 'img' && (!asset.complete || asset.naturalWidth === 0)) {
+              issues.push(`logo image failed to load: ${asset.getAttribute('src') || '(inline)'}`);
+            }
+            const assetRect = asset.getBoundingClientRect();
+            if (assetRect.left < logoRect.left - 1 || assetRect.right > logoRect.right + 1 ||
+                assetRect.top < logoRect.top - 1 || assetRect.bottom > logoRect.bottom + 1) {
+              issues.push('logo asset escapes its contain frame');
+            }
+          }
+        }
+
+        if (!svg) return { ...base, issues };
 
         const viewBox = svg.viewBox.baseVal;
         const width = viewBox.width;
@@ -110,7 +130,6 @@ try {
           }))
           .filter((card) => card.width >= 100 && card.height >= 40);
 
-        const issues = [];
         const outOfBounds = drawable.filter((entry) => !inside(entry.box, width, height, 1));
         if (outOfBounds.length) {
           issues.push(`drawable elements outside the ${width}×${height} viewBox (${outOfBounds.length})`);
@@ -190,7 +209,8 @@ try {
       acknowledged,
       pages,
       diagramPages: pages.filter((row) => row.diagram && row.block).map((row) => ({ page: row.page, title: row.title, screenshot: row.screenshot })),
-      reviewPages: pages.filter((row) => row.block).map((row) => ({ page: row.page, title: row.title, diagram: row.diagram, screenshot: row.screenshot })),
+      logoPages: pages.filter((row) => row.logo && row.block).map((row) => ({ page: row.page, title: row.title, screenshot: row.screenshot })),
+      reviewPages: pages.filter((row) => row.block).map((row) => ({ page: row.page, title: row.title, diagram: row.diagram, logo: row.logo, screenshot: row.screenshot })),
     };
     fs.writeFileSync(reportPath, JSON.stringify(report, null, 2) + '\n');
 
@@ -198,12 +218,13 @@ try {
     console.table(pages.map((row) => ({
       page: row.page,
       title: row.title,
-      kind: row.block ? (row.diagram ? 'block + diagram' : 'block') : 'generated',
+      kind: row.block ? ['block', row.diagram ? 'diagram' : null, row.logo ? 'logo' : null].filter(Boolean).join(' + ') : 'generated',
       screenshot: row.screenshotExists ? 'yes' : 'NO',
       issues: row.issues.length,
     })));
     console.log(`visual report: ${reportPath}`);
     console.log(`diagram pages: ${report.diagramPages.length}`);
+    console.log(`logo pages: ${report.logoPages.length}`);
     if (structuralIssues.length) {
       console.error('\nVISUAL STRUCTURE FAILED:');
       for (const issue of structuralIssues) console.error(`- ${issue}`);
@@ -211,9 +232,10 @@ try {
     } else if (!acknowledged) {
       console.log('\nVISUAL REVIEW REQUIRED. Open every block screenshot below.');
       for (const row of report.reviewPages) {
-        console.log(`- page ${row.page}${row.diagram ? ' [DIAGRAM]' : ''}: ${row.title} -> ${row.screenshot}`);
+        const markers = [row.diagram ? '[DIAGRAM]' : '', row.logo ? '[LOGO]' : ''].filter(Boolean).join(' ');
+        console.log(`- page ${row.page}${markers ? ` ${markers}` : ''}: ${row.title} -> ${row.screenshot}`);
       }
-      console.log('\nInspect alignment, card spacing, label clipping, image crops, and whether each diagram says the right thing. Then rerun with --ack-visual.');
+      console.log('\nInspect alignment, card spacing, label clipping, image crops, logo containment, and whether each diagram says the right thing. Then rerun with --ack-visual.');
       exitCode = 2;
     } else {
       console.log('\nVisual structure checks passed and visual review acknowledged ✓');

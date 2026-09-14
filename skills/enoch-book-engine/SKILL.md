@@ -16,6 +16,8 @@ inline SVG diagrams or photographs.
 - Books live exactly at `books/<slug>/` so their `../../engine/` links work.
 - Keep one concept per `<section class="sheet bb">`.
 - Keep diagrams as inline SVG. Give every SVG `<text>` an explicit `fill`.
+- Put logos and brand lockups in a `.logo` band with an `<img>` or inline `<svg>`; its
+  `contain` styling keeps the whole mark visible. Do not put a logo in `.photo`.
 - Do not invent facts, numbers, quotations, or personal stories.
 - Never add print CSS that changes sizes, fonts, or images.
 
@@ -31,11 +33,11 @@ This builds the book, checks that every page is `0 mm` overflow-free, creates a 
 every page, and runs structural checks on diagrams. The first run intentionally stops
 with exit code 2 and lists the screenshots that require review.
 
-Open every listed block screenshot. Give extra attention to pages marked `[DIAGRAM]`:
-check card alignment, arrow routing, label clipping, spacing, colour roles, and whether
-the picture communicates the same idea as the prose. Also inspect photo crops when a
-page has a photograph. Do not claim the book is finished until the visual review is
-complete, then run:
+Open every listed block screenshot. Give extra attention to pages marked `[DIAGRAM]` or
+`[LOGO]`: check card alignment, arrow routing, label clipping, spacing, colour roles,
+logo containment, and whether the picture communicates the same idea as the prose. Also
+inspect photo crops when a page has a photograph. Do not claim the book is finished
+until the visual review is complete, then run:
 
 ```bash
 npm run verify -- books/<slug> --ack-visual

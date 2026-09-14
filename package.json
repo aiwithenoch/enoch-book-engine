@@ -1,6 +1,6 @@
 {
   "name": "enoch-book-engine",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Write one page at a time. Get a real book. A strict B5 book engine with mandatory screenshot-based visual QA.",
   "type": "module",
   "license": "MIT",

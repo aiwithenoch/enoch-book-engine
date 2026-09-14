@@ -8,6 +8,7 @@ is retained unchanged. This repository does not claim the upstream work as origi
 
 The Enoch-specific work in this repository includes the Enoch branding, the reusable
 `enoch-book-engine` authoring skill, the `verify-book.mjs` workflow, and the
-`visual-check.mjs` screenshot/diagram QA gate. The gate requires an agent to open the
-generated page screenshots, with extra attention to pages containing diagrams, before
-the verification command can be acknowledged.
+`visual-check.mjs` screenshot/diagram/logo QA gate, and the safe `.logo` contain band.
+The gate requires an agent to open the generated page screenshots, with extra attention
+to pages containing diagrams or logos, before the verification command can be
+acknowledged.

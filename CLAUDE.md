@@ -28,6 +28,8 @@ When asked to write or lay out a page, use the **`block` skill** in
   mistake, amber the thing worth protecting, neutral the reader's own app or self.
 - **Diagrams are inline SVG, never generated images.** An image model garbles labels and
   the result cannot be edited. Photographs are for physical subjects only.
+- **Logos use the `.logo` band.** Its `contain` styling preserves the whole mark inside a
+  fixed-height frame; never place a logo in `.photo`, which intentionally crops photos.
 - **Never invent a fact, a number, a study, or a personal story** for a page. If the
   author did not say it, do not write it.
 

@@ -388,6 +388,21 @@ Use `--aspect 16:9`, since the band is wide and short and crops from the centre.
 prompt beside the image as `<name>.txt`. All five showcase prompts are in
 `books/showcase/images/`, next to the photos they produced.
 
+## Logos
+
+Logos and brand lockups are not photographs. Put them in the fixed `.logo` band so the
+whole mark stays visible and its proportions stay intact:
+
+```html
+<div class="logo" role="img" aria-label="Your brand">
+  <img src="images/logo.svg" alt="Your brand">
+</div>
+```
+
+The band uses `object-fit: contain`; do not put a logo in `.photo`, whose `cover` crop is
+intended for photographs. The visual checker marks these pages as `[LOGO]` and checks
+that the asset loads and remains inside the frame.
+
 ## Check, then look
 
 ```
