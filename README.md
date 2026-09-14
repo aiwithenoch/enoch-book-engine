@@ -1,4 +1,4 @@
-# paper engine
+# Enoch Book Engine
 
 **Write one page at a time. Get a real book.**
 
@@ -6,7 +6,8 @@ A page here is a rigid box, 176 by 250 millimetres, which is B5. The same CSS dr
 screen and the print, so what you are looking at is what comes out of the printer. You
 write one concept per page, an AI lays it out and draws the diagram, and one command
 wraps the pages in a cover, a contents, part dividers and an index, then turns the whole
-thing into a PDF.
+thing into a PDF. Enoch Book Engine adds a mandatory screenshot review gate, with extra
+attention on diagram pages, so a page is checked for alignment as well as overflow.
 
 There is no builder UI and nothing to sign up for. The canvas is the guarantee.
 
@@ -54,8 +55,8 @@ a page number can never go stale.
 You need [Node](https://nodejs.org) 18 or newer. That is all.
 
 ```bash
-git clone https://github.com/hassancs91/paper-engine
-cd paper-engine
+git clone https://github.com/aiwithenoch/enoch-book-engine
+cd enoch-book-engine
 npm install
 npx playwright install chromium      # the headless browser that measures and exports
 ```
@@ -63,9 +64,9 @@ npx playwright install chromium      # the headless browser that measures and ex
 Then build the showcase, to prove it works:
 
 ```bash
-npm run build  -- books/showcase              # -> books/showcase/book.html
-npm run check  -- books/showcase/book.html    # every page must read 0 mm
-npm run shot   -- books/showcase/book.html    # one PNG per page. LOOK at them.
+npm run verify -- books/showcase              # build, fit-check, screenshots, visual QA
+# Open every listed block PNG, especially [DIAGRAM] pages, and inspect them.
+npm run verify -- books/showcase --ack-visual # acknowledge that visual review
 npm run export -- books/showcase/book.html    # -> books/showcase/book.pdf
 ```
 
@@ -102,14 +103,16 @@ field, the markup of a page, and what to do when something breaks.
 ## The loop, honestly
 
 ```
-write a page  ->  build  ->  check  ->  LOOK  ->  export
+write a page  ->  verify  ->  LOOK  ->  verify --ack-visual  ->  export
 ```
 
 - **`check` proves it fits.** Every page has to read `0 mm`. It also catches broken
   images and a stylesheet that failed to load.
-- **`shot` is the part people skip.** The check cannot see overlap, a clipped label, a
-  photo cropped through its subject, or a diagram that confidently says the wrong thing.
-  Open the PNGs.
+- **`visual-check` makes the review explicit.** It checks SVG bounds, card geometry,
+  label fit and screenshot presence, then stops until the agent opens the PNGs. The
+  structural check cannot see overlap, a clipped label, a photo cropped through its
+  subject, or a diagram that confidently says the wrong thing. Open every listed PNG,
+  with extra attention to `[DIAGRAM]` pages.
 - **Only you can check the voice.** Whether this sounds like you, whether the diagram
   says what you meant, whether this is the page you wanted. No tool has an opinion about
   that, so read every page before you publish it.
@@ -171,7 +174,7 @@ sentence so it reads as a book instead of a mood board. Details in
 ```
 
 ```bash
-npm run build -- books/showcase --edition free    # -> book-free.html
+npm run verify -- books/showcase --edition free  # review, then add --ack-visual
 ```
 
 Same pages, a shorter book, no second copy to keep in sync. Write the page once and let
@@ -190,7 +193,9 @@ engine/
   sizes/b5.css          the trim. a new size is one file like it.
   themes/studio.css     the look. copy it and change the tokens.
   fonts/                self-hosted, so builds are offline and identical every time
-  tools/                build-book, check, shot, export, gen-image
+  tools/                build-book, check, shot, visual-check, verify, export, gen-image
+skills/
+  enoch-book-engine/    reusable authoring skill for agents using this engine
 books/
   showcase/             the ten pages above
   starter/              copy this to begin
@@ -223,6 +228,15 @@ And there is a video walking through the whole thing:
 
 - **[Watch this engine get built and used, start to finish](https://www.youtube.com/watch?v=EkniwM6Av8E)**
   — how the pages, the diagrams and the book come together, and what it still takes to do it well.
+
+## Upstream and licence
+
+Enoch Book Engine is an independently maintained derivative of
+[paper-engine by Hasan Aboul Hasan](https://github.com/hassancs91/paper-engine). The
+original MIT licence and copyright notice remain in [LICENSE](LICENSE); [NOTICE.md](NOTICE.md)
+records the provenance and the changes made here. The new Enoch work includes the
+branding, the reusable authoring skill, and the mandatory screenshot-based visual-QA
+gate. No upstream authorship or licence history is being removed or falsified.
 
 ## Licence
 

@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-This repo builds **books**: one concept per page, on a strict B5 canvas (176 x 250 mm),
+This repo is the **Enoch Book Engine**. It builds **books**: one concept per page, on a strict B5 canvas (176 x 250 mm),
 where the same CSS drives screen and print. Read `engine/AUTHORING.md` for how the canvas
 works and `engine/tools/README.md` for the commands.
 
@@ -34,14 +34,15 @@ When asked to write or lay out a page, use the **`block` skill** in
 ## The loop, after every edit
 
 ```bash
-node engine/tools/build-book.mjs books/<slug>            # assemble book.html
-node engine/tools/check.mjs      books/<slug>/book.html  # MUST be 0 mm, no broken images
-node engine/tools/shot.mjs       books/<slug>/book.html  # then READ the PNGs
+npm run verify -- books/<slug>              # assemble, fit-check, screenshots, structural QA
+# Open every listed block PNG, especially [DIAGRAM] pages, and READ the images.
+npm run verify -- books/<slug> --ack-visual # acknowledge only after visual review
 ```
 
 `check.mjs` only proves a page FITS. It cannot see overlap, a clipped SVG label, a photo
-cropped through its subject, or a diagram that says the wrong thing. **Always run
-`shot.mjs` and actually look at the images.** A page is not done until you have.
+cropped through its subject, or a diagram that says the wrong thing. `verify-book.mjs`
+adds structural SVG/card checks, but it is still not a replacement for eyes. **Always
+open the screenshots and acknowledge the review.** A page is not done until you have.
 
 ## Adding a page
 

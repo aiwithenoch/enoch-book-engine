@@ -1,6 +1,6 @@
-# engine/tools
+# Enoch Book Engine tools
 
-Five commands. Every one takes paths relative to the repo root, and every one carries a
+Seven commands. Every one takes paths relative to the repo root, and every one carries a
 full usage block at the top of its own file.
 
 One-time setup:
@@ -17,10 +17,14 @@ npx playwright install chromium
 | `build-book.mjs` | Wraps your pages in a cover, a copyright page, a contents with real page numbers, a divider per part and an alphabetical index, then writes `book.html`. Driven entirely by `book.json`. | `node engine/tools/build-book.mjs books/<slug>` |
 | `check.mjs` | **The gate.** Opens the book in a real browser, waits for the fonts, and measures how far each page runs past the bottom edge. Must read `0 mm`. Also catches broken images and a stylesheet that never loaded. Exits 1 on failure. | `node engine/tools/check.mjs books/<slug>/book.html` |
 | `shot.mjs` | One PNG per page, at 2x, so 11px labels are readable. | `node engine/tools/shot.mjs books/<slug>/book.html [out-dir]` |
+| `visual-check.mjs` | Checks screenshot presence, SVG bounds, explicit text colours, card label fit and row geometry, then lists every screenshot an agent must inspect. Exits 2 until that review is acknowledged. | `node engine/tools/visual-check.mjs books/<slug>/book.html [--ack-visual]` |
+| `verify-book.mjs` | Runs build, fit check, screenshots and visual QA as one gate. | `npm run verify -- books/<slug> [--edition free] [--ack-visual]` |
 | `export.mjs` | Deterministic PDF via headless Chrome. Obeys `@page { size:B5; margin:0 }` and prints backgrounds, so the PDF is a 1:1 capture of the screen. | `node engine/tools/export.mjs books/<slug>/book.html [out.pdf]` |
 
-The canonical order: **build, check until every page is 0 mm, shot and READ them,
-export.**
+The canonical order is **verify, open and READ every listed block screenshot, then verify
+again with `--ack-visual`, then export.** The first `verify` pass intentionally stops at
+visual review; an agent must pay extra attention to rows, arrows, label clipping and
+meaning on `[DIAGRAM]` pages.
 
 `check.mjs` proves a page fits. It cannot see overlap, a clipped label, a squashed row, a
 photo cropped through its subject, or a diagram that says the wrong thing. Only the PNGs

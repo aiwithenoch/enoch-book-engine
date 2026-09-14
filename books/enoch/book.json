@@ -1,0 +1,54 @@
+{
+  "title": "The Work Behind AI With Enoch",
+  "subtitle": "Teaching useful AI, building systems, and making ideas travel.",
+  "author": "Enoch",
+
+  "series": "AI With Enoch",
+  "brand": "aiwithenoch.com",
+  "editionLabel": "First edition",
+  "unit": "pages",
+  "unitSingular": "page",
+
+  "numbered": true,
+  "contents": true,
+  "index": true,
+
+  "cover": {
+    "kicker": "A working story",
+    "note": "Built from the work, the systems, and the people behind the name."
+  },
+  "copyright": {
+    "year": 2026,
+    "rights": "© 2026 Enoch. All rights reserved.",
+    "lines": [
+      "Set in Space Grotesk, Inter and JetBrains Mono.",
+      "Built with Enoch Book Engine; upstream: github.com/hassancs91/paper-engine",
+      "Prepared for AI With Enoch."
+    ]
+  },
+
+  "parts": [
+    {
+      "name": "The work",
+      "eyebrow": "Start with the person",
+      "why": "The work starts with a simple question: how do you make AI useful to a real person?",
+      "blocks": ["AI With Enoch", "Practical AI", "24 HOURS OF AI"]
+    },
+    {
+      "name": "The system",
+      "eyebrow": "Make it repeatable",
+      "why": "Teaching grows when the work around the lesson can move without stealing the lesson's attention.",
+      "blocks": ["Classroom system", "Automate the repeat", "Build what repeats"]
+    },
+    {
+      "name": "The reach",
+      "eyebrow": "Let the work travel",
+      "why": "The same idea can move through a live room, a video, a document, and the memory of the next session.",
+      "blocks": ["One idea, many formats", "Memory is infrastructure", "Proof in public"]
+    }
+  ],
+
+  "editions": {
+    "free": ["AI With Enoch", "24 HOURS OF AI", "Proof in public"]
+  }
+}

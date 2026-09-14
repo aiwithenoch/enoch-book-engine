@@ -63,8 +63,8 @@ prints. Nothing reflows, nothing shifts when you export.
 You need [Node](https://nodejs.org) 18 or newer. Nothing else, and no account anywhere.
 
 ```bash
-git clone https://github.com/hassancs91/paper-engine
-cd paper-engine
+git clone https://github.com/aiwithenoch/enoch-book-engine
+cd enoch-book-engine
 npm install
 npx playwright install chromium
 ```
@@ -79,9 +79,9 @@ Before you write anything, build the book that ships with the repo. If this work
 setup is fine.
 
 ```bash
-npm run build  -- books/showcase              # -> books/showcase/book.html
-npm run check  -- books/showcase/book.html    # every page must say 0 mm
-npm run shot   -- books/showcase/book.html    # one PNG per page
+npm run verify -- books/showcase              # build, fit-check, screenshots, visual QA
+# Open every listed block PNG, especially [DIAGRAM] pages, and inspect them.
+npm run verify -- books/showcase --ack-visual # acknowledge the visual review
 npm run export -- books/showcase/book.html    # -> books/showcase/book.pdf
 ```
 
@@ -144,7 +144,7 @@ This one file decides everything printed around your pages, and the order they c
   "contents": true,
   "index": true,
 
-  "cover":     { "kicker": "A paper-engine book", "note": "Written one block at a time." },
+  "cover":     { "kicker": "An Enoch Book Engine book", "note": "Written one block at a time." },
   "copyright": { "year": 2026, "rights": "© 2026 Your Name. All rights reserved.",
                  "lines": ["Set in Space Grotesk, Inter and JetBrains Mono."] },
 
@@ -391,13 +391,13 @@ prompt beside the image as `<name>.txt`. All five showcase prompts are in
 ## Check, then look
 
 ```
-write  ->  build  ->  check  ->  LOOK  ->  export
+write  ->  verify  ->  LOOK  ->  verify --ack-visual  ->  export
 ```
 
 ```bash
-npm run build -- books/my-book
-npm run check -- books/my-book/book.html
-npm run shot  -- books/my-book/book.html
+npm run verify -- books/my-book
+# Open every listed block PNG, especially [DIAGRAM] pages.
+npm run verify -- books/my-book --ack-visual
 ```
 
 **`check` proves a page fits.** Every page must read `0 mm`. It also catches broken
@@ -428,7 +428,7 @@ Name a subset of your pages in `book.json`:
 ```
 
 ```bash
-npm run build -- books/my-book --edition free    # -> book-free.html
+npm run verify -- books/my-book --edition free  # review, then add --ack-visual
 ```
 
 Same pages, a shorter book, nothing duplicated and nothing to keep in sync. Fix a typo

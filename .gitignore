@@ -16,4 +16,7 @@ node_modules/
 # Scoped to books/ on purpose: a bare `page*.png` would also swallow documentation
 # images like docs/images/page-anatomy.png, silently, and break the README on GitHub.
 books/**/page*.png
+books/**/visual-qa.json
+# Edition builds are derived from book.json and the interior; only book.html is committed.
+books/**/book-*.html
 /page*.png

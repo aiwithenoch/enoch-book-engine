@@ -2,16 +2,20 @@
 
 The short version of `CLAUDE.md`, for any coding agent working in this repo.
 
-**What this is:** a book engine. One concept per page, strict B5 (176 x 250 mm), the same
+**What this is:** Enoch Book Engine. One concept per page, strict B5 (176 x 250 mm), the same
 CSS driving screen and print.
 
 **The loop, after every change:**
 
 ```bash
-node engine/tools/build-book.mjs books/<slug>
-node engine/tools/check.mjs      books/<slug>/book.html   # must read 0 mm everywhere
-node engine/tools/shot.mjs       books/<slug>/book.html   # then LOOK at the PNGs
+npm run verify -- books/<slug>              # build, fit-check, screenshots, structural QA
+# Open every listed block PNG, especially [DIAGRAM] pages, and inspect it.
+npm run verify -- books/<slug> --ack-visual # only after the visual review
 ```
+
+`verify` deliberately stops after screenshots on its first pass. An agent must open the
+PNG files and inspect alignment, spacing, clipping, image crops, and diagram meaning
+before acknowledging the review.
 
 **Rules you must not break:**
 

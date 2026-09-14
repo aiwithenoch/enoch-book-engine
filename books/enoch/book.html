@@ -1,0 +1,729 @@
+<!doctype html>
+<!--
+  THE INTERIOR — the source pages for The Work Behind AI With Enoch.
+  The builder adds the cover, copyright page, contents, part dividers, page numbers,
+  and index. Edit this file, not book.html.
+-->
+<html lang="en" data-size="b5">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Work Behind AI With Enoch</title>
+  <link rel="stylesheet" href="../../engine/sheet.css">
+  <link rel="stylesheet" href="../../engine/sizes/b5.css">
+  <link rel="stylesheet" href="../../engine/themes/studio.css">
+  <style>
+    /* ====================================================================
+       GENERATED PAGES — cover, copyright, contents, part dividers, index.
+       Written by engine/tools/build-book.mjs. Scoped .sheet.gp so it can never
+       touch a book page (.sheet.bb).
+       ==================================================================== */
+    .sheet.gp{
+      --ink:#1A1A2E; --muted:#5B6472; --line:#E7E9EF;
+      --accent:#6366F1; --accent-strong:#4F46E5;
+      padding:0; background:#FAFAFC; color:var(--ink);
+      font-family:"Inter",system-ui,sans-serif;
+    }
+    .gp .in{ position:absolute; inset:0; display:flex; flex-direction:column; padding:13mm 15mm; }
+    .gp .in > *{ flex-shrink:0; }
+    /* flex:none, not a basis: .in is a column and .gp-top is a row, and a basis
+       would be read as height in one and width in the other. */
+    .gp-tab{ width:56px; height:7px; flex:none; border-radius:99px; background:var(--accent); }
+    .gp-top{ display:flex; justify-content:space-between; align-items:center; gap:14px; }
+    .gp-pill{
+      font-size:12px; font-weight:500; color:#4B5563; background:#F1F2F6;
+      border:1px solid var(--line); padding:5px 13px; border-radius:99px; white-space:nowrap;
+    }
+    .gp-rule{ height:1px; flex:0 0 1px; background:var(--line); border:0; margin:15px 0; }
+    .gp-foot{
+      display:flex; justify-content:space-between; align-items:center;
+      font-size:12.5px; color:var(--muted); margin-top:auto; padding-top:13px;
+      border-top:1px solid var(--line);
+    }
+
+    /* ---- cover ---- */
+    .gp.cover .cv-kicker{
+      font-size:13px; font-weight:600; letter-spacing:.18em; text-transform:uppercase;
+      color:var(--accent-strong); margin-top:20px;
+    }
+    .gp.cover .cv-mid{ flex:1; display:flex; flex-direction:column; justify-content:center; }
+    .gp.cover .cv-title{
+      font-family:"Space Grotesk",sans-serif; font-size:64px; font-weight:700;
+      line-height:1.02; letter-spacing:-.03em; margin:0; color:var(--ink);
+    }
+    .gp.cover .cv-sub{ font-size:22px; line-height:1.4; color:var(--muted); margin:18px 0 0; max-width:22em; }
+    .gp.cover .cv-meta{ display:flex; justify-content:space-between; align-items:baseline; }
+    .gp.cover .cv-author{ font-family:"Space Grotesk",sans-serif; font-size:19px; font-weight:600; color:var(--ink); }
+    .gp.cover .cv-count{ font-size:14px; color:var(--muted); font-variant-numeric:tabular-nums; }
+    .gp.cover .cv-note{ font-size:13.5px; color:var(--muted); margin:12px 0 0; }
+
+    /* ---- copyright ---- */
+    .gp.colophon .cl-mid{ flex:1; display:flex; flex-direction:column; justify-content:flex-end; }
+    .gp.colophon .cl-title{ font-family:"Space Grotesk",sans-serif; font-size:27px; font-weight:600; letter-spacing:-.02em; margin:0; }
+    .gp.colophon .cl-sub{ font-size:16px; color:var(--muted); margin:5px 0 0; }
+    .gp.colophon .cl-body p{ font-size:13.5px; line-height:1.6; color:var(--muted); margin:0 0 8px; }
+
+    /* ---- part divider ---- */
+    .gp.divider .dv-mid{ flex:1; display:flex; flex-direction:column; justify-content:center; }
+    .gp.divider .dv-eyebrow{
+      font-size:12.5px; font-weight:600; letter-spacing:.18em; text-transform:uppercase;
+      color:var(--accent-strong); margin:0;
+    }
+    .gp.divider .dv-num{
+      font-family:"Space Grotesk",sans-serif; font-weight:700; font-size:78px;
+      line-height:.92; letter-spacing:-.03em; color:var(--ink); margin:4px 0 0;
+    }
+    .gp.divider .dv-name{
+      font-family:"Space Grotesk",sans-serif; font-weight:700; font-size:40px;
+      line-height:1.05; letter-spacing:-.02em; color:var(--ink); margin:12px 0 0;
+    }
+    .gp.divider .dv-why{ font-size:17px; line-height:1.5; color:var(--muted); margin:12px 0 0; max-width:30em; }
+    .gp.divider .dv-list-label{
+      font-size:11.5px; font-weight:600; letter-spacing:.16em; text-transform:uppercase;
+      color:var(--muted); margin:0 0 12px;
+    }
+    .gp.divider .dv-list{
+      list-style:none; margin:0; padding:0;
+      display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px 30px;
+    }
+    .gp.divider .dv-list li{ display:flex; align-items:baseline; gap:10px; }
+    .gp.divider .dv-list .n{
+      font-family:"Space Grotesk",sans-serif; font-weight:600; font-size:13px;
+      color:var(--accent); font-variant-numeric:tabular-nums; min-width:1.6em;
+    }
+    .gp.divider .dv-list .nm{ font-size:15px; color:var(--ink); }
+
+    /* ---- contents + index ---- */
+    .gp .lp-title{ font-family:"Space Grotesk",sans-serif; font-size:30px; font-weight:600; letter-spacing:-.02em; margin:11px 0 0; }
+    .gp.toc .toc-part{ margin-top:14px; }
+    .gp.toc .toc-part:first-child{ margin-top:2px; }
+    .gp.toc .toc-ph{ display:flex; align-items:baseline; gap:10px; line-height:1.4; }
+    .gp.toc .toc-ph .pn{ flex:1; font-family:"Space Grotesk",sans-serif; font-size:14.5px; font-weight:600; color:var(--ink); }
+    .gp.toc .toc-row{ display:flex; align-items:baseline; gap:12px; margin-top:6px; padding-left:3px; line-height:1.4; }
+    .gp.toc .toc-row .nm{ flex:1; font-size:13.5px; color:var(--ink); }
+    .gp .pg{ font-variant-numeric:tabular-nums; font-size:13px; color:var(--muted); }
+    .gp.index .idx{ margin-top:4px; column-count:3; column-gap:22px; }
+    .gp.index .idx-row{
+      display:flex; align-items:baseline; gap:10px; break-inside:avoid;
+      padding:2px 1px; border-bottom:1px solid #EFF1F5;
+    }
+    .gp.index .idx-row .nm{ flex:1; font-size:12px; color:var(--ink); }
+    .gp.index .idx-row .pg{ font-size:12px; }
+
+    /* ====================================================================
+       ONE PAGE COUNTER for the whole book. Every sheet advances it; only the
+       book pages print it, so a printed number is the real page in the PDF.
+       Overrides the theme's page-only counter (inline wins over linked).
+       ==================================================================== */
+    .deck{ counter-reset:pageno; }
+    .sheet.gp, .sheet.bb{ counter-increment:pageno; }
+    .bb .foot .pg::before{ content:counter(pageno); }
+  </style>
+</head>
+<body>
+  <main class="deck">
+
+        <section class="sheet gp cover">
+      <div class="in">
+        <div class="gp-tab"></div>
+        <div class="cv-kicker">A working story</div>
+        <div class="cv-mid">
+          <h1 class="cv-title">The Work Behind AI With Enoch</h1>
+          <p class="cv-sub">Teaching useful AI, building systems, and making ideas travel.</p>
+        </div>
+        <div class="cv-bottom">
+          <hr class="gp-rule">
+          <div class="cv-meta">
+            <span class="cv-author">Enoch</span>
+            <span class="cv-count">9 pages</span>
+          </div>
+          <p class="cv-note">Built from the work, the systems, and the people behind the name.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sheet gp colophon">
+      <div class="in">
+        <div class="gp-tab"></div>
+        <div class="cl-mid">
+          <h2 class="cl-title">The Work Behind AI With Enoch</h2>
+          <p class="cl-sub">Teaching useful AI, building systems, and making ideas travel.</p>
+          <hr class="gp-rule">
+          <div class="cl-body">
+            <p>Set in Space Grotesk, Inter and JetBrains Mono.</p>
+          <p>Built with Enoch Book Engine; upstream: github.com/hassancs91/paper-engine</p>
+          <p>Prepared for AI With Enoch.</p>
+            <p>© 2026 Enoch. All rights reserved.</p>
+            <p>First edition · aiwithenoch.com</p>
+          </div>
+        </div>
+        <div class="gp-foot"><span>aiwithenoch.com</span><span>First edition</span></div>
+      </div>
+    </section>
+
+    <section class="sheet gp toc">
+      <div class="in">
+        <div class="gp-top">
+          <div class="gp-tab"></div>
+          <span class="gp-pill">Contents</span>
+        </div>
+        <h1 class="lp-title">Contents</h1>
+        <hr class="gp-rule">
+        <div class="toc-list">
+          <div class="toc-part">
+            <div class="toc-ph"><span class="pn">Part 1 · The work</span><span class="pg">4</span></div>
+            <div class="toc-row"><span class="nm">AI With Enoch</span><span class="pg">5</span></div>
+            <div class="toc-row"><span class="nm">Practical AI</span><span class="pg">6</span></div>
+            <div class="toc-row"><span class="nm">24 HOURS OF AI</span><span class="pg">7</span></div>
+          </div>
+          <div class="toc-part">
+            <div class="toc-ph"><span class="pn">Part 2 · The system</span><span class="pg">8</span></div>
+            <div class="toc-row"><span class="nm">Classroom system</span><span class="pg">9</span></div>
+            <div class="toc-row"><span class="nm">Automate the repeat</span><span class="pg">10</span></div>
+            <div class="toc-row"><span class="nm">Build what repeats</span><span class="pg">11</span></div>
+          </div>
+          <div class="toc-part">
+            <div class="toc-ph"><span class="pn">Part 3 · The reach</span><span class="pg">12</span></div>
+            <div class="toc-row"><span class="nm">One idea, many formats</span><span class="pg">13</span></div>
+            <div class="toc-row"><span class="nm">Memory is infrastructure</span><span class="pg">14</span></div>
+            <div class="toc-row"><span class="nm">Proof in public</span><span class="pg">15</span></div>
+          </div>
+        </div>
+        <div class="gp-foot"><span>aiwithenoch.com</span><span>The Work Behind AI With Enoch</span></div>
+      </div>
+    </section>
+
+    <section class="sheet gp divider">
+      <div class="in">
+        <div class="gp-top">
+          <div class="gp-tab"></div>
+          <span class="gp-pill">Part 1 of 3</span>
+        </div>
+        <div class="dv-mid">
+          <div class="dv-eyebrow">Start with the person</div>
+          <div class="dv-num">1</div>
+          <h2 class="dv-name">The work</h2>
+          <p class="dv-why">The work starts with a simple question: how do you make AI useful to a real person?</p>
+          <hr class="gp-rule">
+          <div class="dv-list-label">In this part</div>
+          <ol class="dv-list">
+            <li><span class="n">01</span><span class="nm">AI With Enoch</span></li>
+            <li><span class="n">02</span><span class="nm">Practical AI</span></li>
+            <li><span class="n">03</span><span class="nm">24 HOURS OF AI</span></li>
+          </ol>
+        </div>
+        <div class="gp-foot"><span>aiwithenoch.com</span><span>First edition</span></div>
+      </div>
+    </section>
+
+<section class="sheet bb">
+      <h2 class="sr">AI With Enoch is Enoch's practical AI teaching work from Ghana for creators, students, and business owners.</h2>
+      <div class="tab"></div>
+      <div class="top">
+        <div class="eyebrow"><b>AI With Enoch</b> · No. 01</div>
+        <span class="pill">Identity</span>
+      </div>
+      <h1 class="title">AI With Enoch</h1>
+      <div class="sub">Practical AI from Ghana for real work</div>
+      <hr class="rule">
+      <div class="diagram">
+        <svg width="100%" viewBox="0 0 592 176" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Real work flows through practical AI teaching into a useful result.">
+          <defs>
+            <marker id="ar1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+            <filter id="cs1" x="-20%" y="-25%" width="140%" height="160%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#1A1A2E" flood-opacity="0.07"/></filter>
+          </defs>
+          <rect x="24" y="60" width="150" height="54" rx="12" fill="#FFFFFF" stroke="#E7E9EF" stroke-width="1" filter="url(#cs1)"/>
+          <text x="99" y="83" text-anchor="middle" style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;fill:#1A1A2E">Real work</text>
+          <text x="99" y="98" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:#5B6472">starts here</text>
+          <rect x="221" y="60" width="150" height="54" rx="12" fill="#EEF0FE" stroke="#D5D8FA" stroke-width="1" filter="url(#cs1)"/>
+          <text x="296" y="83" text-anchor="middle" style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;fill:#4F46E5">AI With Enoch</text>
+          <text x="296" y="98" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:#6366F1">makes it clear</text>
+          <rect x="418" y="60" width="150" height="54" rx="12" fill="#ECFBF7" stroke="#CDEFE8" stroke-width="1" filter="url(#cs1)"/>
+          <text x="493" y="83" text-anchor="middle" style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;fill:#0D9488">Useful result</text>
+          <text x="493" y="98" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:#5B6472">leaves the room</text>
+          <line x1="174" y1="87" x2="221" y2="87" stroke="#94A3B8" stroke-width="1.75" marker-end="url(#ar1)"/>
+          <line x1="371" y1="87" x2="418" y2="87" stroke="#94A3B8" stroke-width="1.75" marker-end="url(#ar1)"/>
+          <circle cx="198" cy="87" r="11" fill="#6366F1"/><text x="198" y="87" text-anchor="middle" dominant-baseline="central" style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;fill:#FFFFFF">1</text>
+          <circle cx="395" cy="87" r="11" fill="#6366F1"/><text x="395" y="87" text-anchor="middle" dominant-baseline="central" style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;fill:#FFFFFF">2</text>
+          <text x="296" y="151" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:12.5px;fill:#5B6472">1 start with the work · 2 make AI useful</text>
+        </svg>
+      </div>
+      <hr class="rule">
+      <div class="explain">
+        <p>Let's say someone knows AI matters but still has a real job to finish. <span class="bad">More tools won't help if the next step is still foggy.</span></p>
+        <p>Your work starts with the task, then makes the tool serve it. <span class="hl">AI becomes useful when a person can use it on something real</span>, and the result can travel into their work.</p>
+        <p class="close">Useful beats impressive.</p>
+      </div>
+      <div class="ask">
+        <span class="lbl">TELL THE AI</span>
+        <p>Start with the result I need. Then show me the smallest AI step that gets me there in plain language.</p>
+      </div>
+      <div class="foot"><span class="brand">aiwithenoch.com</span><span class="pg"></span><span class="series">The work</span></div>
+    </section>
+
+<section class="sheet bb">
+      <h2 class="sr">Practical AI means taking a real task, finding the next useful step, and doing it instead of collecting tools.</h2>
+      <div class="tab"></div>
+      <div class="top">
+        <div class="eyebrow"><b>AI With Enoch</b> · No. 02</div>
+        <span class="pill">Teaching</span>
+      </div>
+      <h1 class="title">Practical AI</h1>
+      <div class="sub">Make the next step clear</div>
+      <hr class="rule">
+      <div class="diagram">
+        <svg width="100%" viewBox="0 0 592 224" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A before and after diagram: too many tools lead nowhere, while one real task leads to one clear next move and work that moves.">
+          <defs>
+            <marker id="ar2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+            <filter id="cs2" x="-20%" y="-25%" width="140%" height="160%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#1A1A2E" flood-opacity="0.07"/></filter>
+          </defs>
+          <text x="24" y="17" style="font-family:'Inter',sans-serif;font-size:11.5px;font-weight:600;letter-spacing:.3px;fill:#5B6472">WITHOUT A USE</text>
+          <rect x="24" y="30" width="150" height="54" rx="12" fill="#FFFFFF" stroke="#E7E9EF" stroke-width="1" filter="url(#cs2)"/>
+          <text x="99" y="53" text-anchor="middle" style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;fill:#1A1A2E">AI is big</text>
+          <text x="99" y="68" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:#5B6472">too many tabs</text>
+          <rect x="221" y="30" width="150" height="54" rx="12" fill="#FFFFFF" stroke="#E7E9EF" stroke-width="1" filter="url(#cs2)"/>
+          <text x="296" y="53" text-anchor="middle" style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;fill:#1A1A2E">More tools</text>
+          <text x="296" y="68" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:#5B6472">less direction</text>
+          <rect x="418" y="30" width="150" height="54" rx="12" fill="#FEF1F1" stroke="#F8D6D6" stroke-width="1" filter="url(#cs2)"/>
+          <text x="493" y="53" text-anchor="middle" style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;fill:#DC2626">Nothing moves</text>
+          <text x="493" y="68" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:#5B6472">task still open</text>
+          <line x1="174" y1="57" x2="221" y2="57" stroke="#94A3B8" stroke-width="1.75" marker-end="url(#ar2)"/>
+          <line x1="371" y1="57" x2="418" y2="57" stroke="#DC2626" stroke-width="1.75" marker-end="url(#ar2)"/>
+          <text x="24" y="122" style="font-family:'Inter',sans-serif;font-size:11.5px;font-weight:600;letter-spacing:.3px;fill:#5B6472">WITH A REAL TASK</text>
+          <rect x="24" y="135" width="150" height="54" rx="12" fill="#FFFFFF" stroke="#E7E9EF" stroke-width="1" filter="url(#cs2)"/>
+          <text x="99" y="158" text-anchor="middle" style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;fill:#1A1A2E">Real task</text>
+          <text x="99" y="173" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:#5B6472">starts the ask</text>
+          <rect x="221" y="135" width="150" height="54" rx="12" fill="#EEF0FE" stroke="#D5D8FA" stroke-width="1" filter="url(#cs2)"/>
+          <text x="296" y="158" text-anchor="middle" style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;fill:#4F46E5">Next step</text>
+          <text x="296" y="173" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:#6366F1">clear enough</text>
+          <rect x="418" y="135" width="150" height="54" rx="12" fill="#ECFBF7" stroke="#CDEFE8" stroke-width="1" filter="url(#cs2)"/>
+          <text x="493" y="158" text-anchor="middle" style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;fill:#0D9488">Work moves</text>
+          <text x="493" y="173" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:#5B6472">one step done</text>
+          <line x1="174" y1="162" x2="221" y2="162" stroke="#94A3B8" stroke-width="1.75" marker-end="url(#ar2)"/>
+          <line x1="371" y1="162" x2="418" y2="162" stroke="#0D9488" stroke-width="1.75" marker-end="url(#ar2)"/>
+        </svg>
+      </div>
+      <hr class="rule">
+      <div class="explain">
+        <p>Let's say somebody hears AI everywhere but doesn't know what to do with it. They collect prompts, tools, and tabs, while <span class="bad">the original task stays unfinished</span>.</p>
+        <p>Your teaching brings the task back into view. <span class="hl">Pick the real job first, then use AI for the next step</span>. That is how a complicated tool becomes a <span class="good">usable move</span>.</p>
+        <p class="close">The tool isn't the lesson. The next move is.</p>
+      </div>
+      <div class="ask">
+        <span class="lbl">TELL THE AI</span>
+        <p>Take one real task. Ask AI for one useful next step in plain language, then do that step.</p>
+      </div>
+      <div class="foot"><span class="brand">aiwithenoch.com</span><span class="pg"></span><span class="series">The work</span></div>
+    </section>
+
+<section class="sheet bb">
+      <h2 class="sr">A 24-hour video-first run called 24 HOURS OF AI trained 6,371 people and made practical teaching available to a wider room.</h2>
+      <div class="tab"></div>
+      <div class="top">
+        <div class="eyebrow"><b>AI With Enoch</b> · No. 03</div>
+        <span class="pill">Event</span>
+      </div>
+      <h1 class="title">24 HOURS OF AI</h1>
+      <div class="sub">Teach until the idea travels</div>
+      <hr class="rule">
+      <div class="diagram">
+        <svg width="100%" viewBox="0 0 592 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A 24-hour timeline that starts with one lesson and ends with a wider room of 6,371 people trained.">
+          <defs>
+            <marker id="ar3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+            <filter id="cs3" x="-20%" y="-25%" width="140%" height="160%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#1A1A2E" flood-opacity="0.07"/></filter>
+          </defs>
+          <text x="40" y="22" style="font-family:'Inter',sans-serif;font-size:11.5px;font-weight:600;letter-spacing:.3px;fill:#5B6472">ONE LESSON, A WIDER ROOM</text>
+          <line x1="45" y1="96" x2="415" y2="96" stroke="#94A3B8" stroke-width="2" marker-end="url(#ar3)"/>
+          <line x1="45" y1="86" x2="45" y2="106" stroke="#94A3B8" stroke-width="1.5"/>
+          <line x1="137" y1="86" x2="137" y2="106" stroke="#94A3B8" stroke-width="1.5"/>
+          <line x1="230" y1="86" x2="230" y2="106" stroke="#94A3B8" stroke-width="1.5"/>
+          <line x1="322" y1="86" x2="322" y2="106" stroke="#94A3B8" stroke-width="1.5"/>
+          <line x1="415" y1="86" x2="415" y2="106" stroke="#94A3B8" stroke-width="1.5"/>
+          <circle cx="45" cy="96" r="8" fill="#6366F1"/>
+          <circle cx="137" cy="96" r="8" fill="#6366F1"/>
+          <circle cx="230" cy="96" r="8" fill="#6366F1"/>
+          <circle cx="322" cy="96" r="8" fill="#6366F1"/>
+          <circle cx="415" cy="96" r="8" fill="#0D9488"/>
+          <text x="45" y="125" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:#5B6472">0h</text>
+          <text x="137" y="125" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:#5B6472">6h</text>
+          <text x="230" y="125" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:#5B6472">12h</text>
+          <text x="322" y="125" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:#5B6472">18h</text>
+          <text x="415" y="125" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:#5B6472">24h</text>
+          <rect x="430" y="57" width="140" height="75" rx="13" fill="#ECFBF7" stroke="#CDEFE8" stroke-width="1" filter="url(#cs3)"/>
+          <text x="500" y="84" text-anchor="middle" style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600;fill:#0D9488">6,371</text>
+          <text x="500" y="104" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:#5B6472">people trained</text>
+          <text x="296" y="168" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:12.5px;fill:#5B6472">A long format, one practical idea at a time</text>
+        </svg>
+      </div>
+      <hr class="rule">
+      <div class="explain">
+        <p>Let's say one explanation helps one person, then disappears when the call ends. A longer format gives more people a place to join, ask, and keep going.</p>
+        <p>Your 24 HOURS OF AI run made the lesson public and live. It trained <span class="good">6,371 people</span>, turning a single teaching effort into a wider room.</p>
+        <p class="close">Reach is useful when the lesson still works.</p>
+      </div>
+      <div class="ask">
+        <span class="lbl">TELL THE AI</span>
+        <p>Choose one practical AI topic. Teach it live or on video until one real person can use it.</p>
+      </div>
+      <div class="foot"><span class="brand">aiwithenoch.com</span><span class="pg"></span><span class="series">The work</span></div>
+    </section>
+
+    <section class="sheet gp divider">
+      <div class="in">
+        <div class="gp-top">
+          <div class="gp-tab"></div>
+          <span class="gp-pill">Part 2 of 3</span>
+        </div>
+        <div class="dv-mid">
+          <div class="dv-eyebrow">Make it repeatable</div>
+          <div class="dv-num">2</div>
+          <h2 class="dv-name">The system</h2>
+          <p class="dv-why">Teaching grows when the work around the lesson can move without stealing the lesson's attention.</p>
+          <hr class="gp-rule">
+          <div class="dv-list-label">In this part</div>
+          <ol class="dv-list">
+            <li><span class="n">01</span><span class="nm">Classroom system</span></li>
+            <li><span class="n">02</span><span class="nm">Automate the repeat</span></li>
+            <li><span class="n">03</span><span class="nm">Build what repeats</span></li>
+          </ol>
+        </div>
+        <div class="gp-foot"><span>aiwithenoch.com</span><span>First edition</span></div>
+      </div>
+    </section>
+
+<section class="sheet bb">
+      <h2 class="sr">Enoch treats the booking, calendar, meeting link, reminder, class, and follow-up as one connected classroom system.</h2>
+      <div class="tab"></div>
+      <div class="top">
+        <div class="eyebrow"><b>AI With Enoch</b> · No. 04</div>
+        <span class="pill">Education</span>
+      </div>
+      <h1 class="title">Classroom system</h1>
+      <div class="sub">The lesson is more than the call</div>
+      <hr class="rule">
+      <div class="diagram">
+        <svg width="100%" viewBox="0 0 592 176" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A class workflow: a booking becomes a class, then becomes a follow-up.">
+          <defs>
+            <marker id="ar4" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+            <filter id="cs4" x="-20%" y="-25%" width="140%" height="160%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#1A1A2E" flood-opacity="0.07"/></filter>
+          </defs>
+          <rect x="24" y="60" width="150" height="54" rx="12" fill="#FFFFFF" stroke="#E7E9EF" stroke-width="1" filter="url(#cs4)"/>
+          <text x="99" y="83" text-anchor="middle" style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;fill:#1A1A2E">A booking</text>
+          <text x="99" y="98" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:#5B6472">starts the path</text>
+          <rect x="221" y="60" width="150" height="54" rx="12" fill="#EEF0FE" stroke="#D5D8FA" stroke-width="1" filter="url(#cs4)"/>
+          <text x="296" y="83" text-anchor="middle" style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;fill:#4F46E5">A class</text>
+          <text x="296" y="98" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:#6366F1">time to teach</text>
+          <rect x="418" y="60" width="150" height="54" rx="12" fill="#ECFBF7" stroke="#CDEFE8" stroke-width="1" filter="url(#cs4)"/>
+          <text x="493" y="83" text-anchor="middle" style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;fill:#0D9488">Follow-up</text>
+          <text x="493" y="98" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:#5B6472">next step ready</text>
+          <line x1="174" y1="87" x2="221" y2="87" stroke="#94A3B8" stroke-width="1.75" marker-end="url(#ar4)"/>
+          <line x1="371" y1="87" x2="418" y2="87" stroke="#0D9488" stroke-width="1.75" marker-end="url(#ar4)"/>
+          <circle cx="198" cy="87" r="11" fill="#6366F1"/><text x="198" y="87" text-anchor="middle" dominant-baseline="central" style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;fill:#FFFFFF">1</text>
+          <circle cx="395" cy="87" r="11" fill="#6366F1"/><text x="395" y="87" text-anchor="middle" dominant-baseline="central" style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;fill:#FFFFFF">2</text>
+          <text x="296" y="151" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:12.5px;fill:#5B6472">Booking · calendar · link · reminder · class · follow-up</text>
+        </svg>
+      </div>
+      <hr class="rule">
+      <div class="explain">
+        <p>Let's say the teaching is ready, but every class still needs a booking, a calendar slot, a meeting link, a reminder, and a follow-up. <span class="bad">The lesson loses energy in the gaps around it.</span></p>
+        <p>You've treated those gaps as part of the work. <span class="hl">Connect the handoffs</span> so a learner can move from booking to class to next step with less chasing.</p>
+        <p class="close">A good class starts before the call.</p>
+      </div>
+      <div class="ask">
+        <span class="lbl">TELL THE AI</span>
+        <p>Map my path from booking to follow-up. Show every handoff and automate the repeatable ones.</p>
+      </div>
+      <div class="foot"><span class="brand">aiwithenoch.com</span><span class="pg"></span><span class="series">The system</span></div>
+    </section>
+
+<section class="sheet bb">
+      <h2 class="sr">Automation connects a new event to a workflow and then to a timely reminder, while leaving failure cases visible.</h2>
+      <div class="tab"></div>
+      <div class="top">
+        <div class="eyebrow"><b>AI With Enoch</b> · No. 05</div>
+        <span class="pill">Systems</span>
+      </div>
+      <h1 class="title">Automate the repeat</h1>
+      <div class="sub">Keep the handoff moving</div>
+      <hr class="rule">
+      <div class="diagram">
+        <svg width="100%" viewBox="0 0 592 204" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A new event enters a workflow and becomes a timely reminder, while a manual chase is shown as the bad path.">
+          <defs>
+            <marker id="ar5" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+            <filter id="cs5" x="-20%" y="-25%" width="140%" height="160%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#1A1A2E" flood-opacity="0.07"/></filter>
+          </defs>
+          <text x="24" y="19" style="font-family:'Inter',sans-serif;font-size:11.5px;font-weight:600;letter-spacing:.3px;fill:#5B6472">A SMALL EVENT, A CLEAN HANDOFF</text>
+          <rect x="24" y="50" width="150" height="54" rx="12" fill="#FFFFFF" stroke="#E7E9EF" stroke-width="1" filter="url(#cs5)"/>
+          <text x="99" y="73" text-anchor="middle" style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;fill:#1A1A2E">New event</text>
+          <text x="99" y="88" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:#5B6472">email or booking</text>
+          <rect x="221" y="50" width="150" height="54" rx="12" fill="#EEF0FE" stroke="#D5D8FA" stroke-width="1" filter="url(#cs5)"/>
+          <text x="296" y="73" text-anchor="middle" style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;fill:#4F46E5">Workflow</text>
+          <text x="296" y="88" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:#6366F1">trigger, action, check</text>
+          <rect x="418" y="50" width="150" height="54" rx="12" fill="#ECFBF7" stroke="#CDEFE8" stroke-width="1" filter="url(#cs5)"/>
+          <text x="493" y="73" text-anchor="middle" style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;fill:#0D9488">Reminder</text>
+          <text x="493" y="88" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:#5B6472">arrives on time</text>
+          <line x1="174" y1="77" x2="221" y2="77" stroke="#94A3B8" stroke-width="1.75" marker-end="url(#ar5)"/>
+          <line x1="371" y1="77" x2="418" y2="77" stroke="#0D9488" stroke-width="1.75" marker-end="url(#ar5)"/>
+          <path d="M296 104 L296 155 L418 155" fill="none" stroke="#DC2626" stroke-width="1.75" stroke-dasharray="5 5" marker-end="url(#ar5)"/>
+          <rect x="221" y="143" width="150" height="44" rx="12" fill="#FEF1F1" stroke="#F8D6D6" stroke-width="1" filter="url(#cs5)"/>
+          <text x="296" y="162" text-anchor="middle" style="font-family:'Space Grotesk',sans-serif;font-size:13.5px;font-weight:600;fill:#DC2626">Manual chase</text>
+          <text x="296" y="177" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:#5B6472">if the check is missing</text>
+          <text x="493" y="180" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:#5B6472">failure stays visible</text>
+        </svg>
+      </div>
+      <hr class="rule">
+      <div class="explain">
+        <p>Let's say an email arrives, a class is booked, or a reminder is due. If you keep checking by hand, <span class="bad">the same small job keeps asking for your attention</span>.</p>
+        <p>You've connected calendars, inboxes, messaging, and local tools to move those jobs forward. <span class="hl">Trigger, action, and failure case</span> are enough to start, and the payoff is <span class="good">time returned to the work that needs you</span>.</p>
+        <p class="close">Automate the repeat, keep the judgment.</p>
+      </div>
+      <div class="ask">
+        <span class="lbl">TELL THE AI</span>
+        <p>Name the trigger, the action, and what should happen if the automation fails.</p>
+      </div>
+      <div class="foot"><span class="brand">aiwithenoch.com</span><span class="pg"></span><span class="series">The system</span></div>
+    </section>
+
+<section class="sheet bb snug">
+      <h2 class="sr">When a task repeats, Enoch's approach is to turn the repeated loop into the smallest useful system instead of rebuilding it by hand.</h2>
+      <div class="tab"></div>
+      <div class="top">
+        <div class="eyebrow"><b>AI With Enoch</b> · No. 06</div>
+        <span class="pill">Product</span>
+      </div>
+      <h1 class="title">Build what repeats</h1>
+      <div class="sub">Turn recurring work into a tool</div>
+      <hr class="rule">
+      <div class="diagram">
+        <svg width="100%" viewBox="0 0 592 224" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A before and after diagram: the same request rebuilt manually stays expensive, while a small system makes the next time easier.">
+          <defs>
+            <marker id="ar6" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+            <filter id="cs6" x="-20%" y="-25%" width="140%" height="160%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#1A1A2E" flood-opacity="0.07"/></filter>
+          </defs>
+          <text x="24" y="17" style="font-family:'Inter',sans-serif;font-size:11.5px;font-weight:600;letter-spacing:.3px;fill:#5B6472">REBUILD IT AGAIN</text>
+          <rect x="24" y="30" width="150" height="54" rx="12" fill="#FFFFFF" stroke="#E7E9EF" stroke-width="1" filter="url(#cs6)"/>
+          <text x="99" y="53" text-anchor="middle" style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;fill:#1A1A2E">Same request</text>
+          <text x="99" y="68" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:#5B6472">returns next week</text>
+          <rect x="221" y="30" width="150" height="54" rx="12" fill="#FFFFFF" stroke="#E7E9EF" stroke-width="1" filter="url(#cs6)"/>
+          <text x="296" y="53" text-anchor="middle" style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;fill:#1A1A2E">Manual again</text>
+          <text x="296" y="68" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:#5B6472">same work twice</text>
+          <rect x="418" y="30" width="150" height="54" rx="12" fill="#FEF1F1" stroke="#F8D6D6" stroke-width="1" filter="url(#cs6)"/>
+          <text x="493" y="53" text-anchor="middle" style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;fill:#DC2626">Time lost</text>
+          <text x="493" y="68" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:#5B6472">pattern forgotten</text>
+          <line x1="174" y1="57" x2="221" y2="57" stroke="#94A3B8" stroke-width="1.75" marker-end="url(#ar6)"/>
+          <line x1="371" y1="57" x2="418" y2="57" stroke="#DC2626" stroke-width="1.75" marker-end="url(#ar6)"/>
+          <text x="24" y="122" style="font-family:'Inter',sans-serif;font-size:11.5px;font-weight:600;letter-spacing:.3px;fill:#5B6472">MAKE THE LOOP REUSABLE</text>
+          <rect x="24" y="135" width="150" height="54" rx="12" fill="#FFFFFF" stroke="#E7E9EF" stroke-width="1" filter="url(#cs6)"/>
+          <text x="99" y="158" text-anchor="middle" style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;fill:#1A1A2E">Same request</text>
+          <text x="99" y="173" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:#5B6472">shows the pattern</text>
+          <rect x="221" y="135" width="150" height="54" rx="12" fill="#EEF0FE" stroke="#D5D8FA" stroke-width="1" filter="url(#cs6)"/>
+          <text x="296" y="158" text-anchor="middle" style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;fill:#4F46E5">Small system</text>
+          <text x="296" y="173" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:#6366F1">one whole loop</text>
+          <rect x="418" y="135" width="150" height="54" rx="12" fill="#ECFBF7" stroke="#CDEFE8" stroke-width="1" filter="url(#cs6)"/>
+          <text x="493" y="158" text-anchor="middle" style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;fill:#0D9488">Next time</text>
+          <text x="493" y="173" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:#5B6472">gets easier</text>
+          <line x1="174" y1="162" x2="221" y2="162" stroke="#94A3B8" stroke-width="1.75" marker-end="url(#ar6)"/>
+          <line x1="371" y1="162" x2="418" y2="162" stroke="#0D9488" stroke-width="1.75" marker-end="url(#ar6)"/>
+        </svg>
+      </div>
+      <hr class="rule">
+      <div class="explain">
+        <p>Let's say the same task returns next week. You rebuild it again and lose the same time again. <span class="bad">Repetition is a tax when nothing remembers the pattern.</span></p>
+        <p>Your projects move toward systems for tasks, bookings, reminders, and follow-up. <span class="hl">Build the smallest tool that completes one whole loop</span>, then improve it when it proves itself.</p>
+        <p class="close">If it repeats, it can become a system.</p>
+      </div>
+      <div class="ask">
+        <span class="lbl">TELL THE AI</span>
+        <p>Find one task I repeat. Build the smallest tool that handles its complete loop.</p>
+      </div>
+      <div class="foot"><span class="brand">aiwithenoch.com</span><span class="pg"></span><span class="series">The system</span></div>
+    </section>
+
+    <section class="sheet gp divider">
+      <div class="in">
+        <div class="gp-top">
+          <div class="gp-tab"></div>
+          <span class="gp-pill">Part 3 of 3</span>
+        </div>
+        <div class="dv-mid">
+          <div class="dv-eyebrow">Let the work travel</div>
+          <div class="dv-num">3</div>
+          <h2 class="dv-name">The reach</h2>
+          <p class="dv-why">The same idea can move through a live room, a video, a document, and the memory of the next session.</p>
+          <hr class="gp-rule">
+          <div class="dv-list-label">In this part</div>
+          <ol class="dv-list">
+            <li><span class="n">01</span><span class="nm">One idea, many formats</span></li>
+            <li><span class="n">02</span><span class="nm">Memory is infrastructure</span></li>
+            <li><span class="n">03</span><span class="nm">Proof in public</span></li>
+          </ol>
+        </div>
+        <div class="gp-foot"><span>aiwithenoch.com</span><span>First edition</span></div>
+      </div>
+    </section>
+
+<section class="sheet bb">
+      <h2 class="sr">One lesson can become a video or a book page while keeping its core point, so the idea can reach people in more than one format.</h2>
+      <div class="tab"></div>
+      <div class="top">
+        <div class="eyebrow"><b>AI With Enoch</b> · No. 07</div>
+        <span class="pill">Media</span>
+      </div>
+      <h1 class="title">One idea, many formats</h1>
+      <div class="sub">Keep the lesson, change the medium</div>
+      <hr class="rule">
+      <div class="diagram">
+        <svg width="100%" viewBox="0 0 592 204" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="One idea branches into a video and a book page, showing the lesson staying stable while the format changes.">
+          <defs>
+            <marker id="ar7" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+            <filter id="cs7" x="-20%" y="-25%" width="140%" height="160%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#1A1A2E" flood-opacity="0.07"/></filter>
+          </defs>
+          <text x="24" y="20" style="font-family:'Inter',sans-serif;font-size:11.5px;font-weight:600;letter-spacing:.3px;fill:#5B6472">ONE CORE POINT</text>
+          <rect x="24" y="75" width="150" height="54" rx="12" fill="#FFFFFF" stroke="#E7E9EF" stroke-width="1" filter="url(#cs7)"/>
+          <text x="99" y="98" text-anchor="middle" style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;fill:#1A1A2E">One idea</text>
+          <text x="99" y="113" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:#5B6472">stays the same</text>
+          <rect x="418" y="35" width="150" height="54" rx="12" fill="#EEF0FE" stroke="#D5D8FA" stroke-width="1" filter="url(#cs7)"/>
+          <text x="493" y="58" text-anchor="middle" style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;fill:#4F46E5">Video</text>
+          <text x="493" y="73" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:#6366F1">watch and hear it</text>
+          <rect x="418" y="125" width="150" height="54" rx="12" fill="#ECFBF7" stroke="#CDEFE8" stroke-width="1" filter="url(#cs7)"/>
+          <text x="493" y="148" text-anchor="middle" style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;fill:#0D9488">Book page</text>
+          <text x="493" y="163" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:#5B6472">read and keep it</text>
+          <path d="M174 102 L300 102 L300 62 L418 62" fill="none" stroke="#94A3B8" stroke-width="1.75" marker-end="url(#ar7)"/>
+          <path d="M300 102 L300 152 L418 152" fill="none" stroke="#0D9488" stroke-width="1.75" marker-end="url(#ar7)"/>
+          <circle cx="270" cy="102" r="11" fill="#6366F1"/><text x="270" y="102" text-anchor="middle" dominant-baseline="central" style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;fill:#FFFFFF">1</text>
+          <circle cx="365" cy="62" r="11" fill="#6366F1"/><text x="365" y="62" text-anchor="middle" dominant-baseline="central" style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;fill:#FFFFFF">2</text>
+          <circle cx="365" cy="152" r="11" fill="#6366F1"/><text x="365" y="152" text-anchor="middle" dominant-baseline="central" style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;fill:#FFFFFF">3</text>
+          <text x="296" y="194" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:12.5px;fill:#5B6472">1 keep the idea · 2 change the container</text>
+        </svg>
+      </div>
+      <hr class="rule">
+      <div class="explain">
+        <p>Let's say the same lesson could help somebody in a video, a page, or a checklist. Starting from scratch each time makes every format expensive.</p>
+        <p>Your work moves through video, motion, captions, documents, and PDFs. <span class="hl">Keep the idea stable and change the container</span> so more people can meet it where they already are.</p>
+        <p class="close">The format changes. The useful idea stays.</p>
+      </div>
+      <div class="ask">
+        <span class="lbl">TELL THE AI</span>
+        <p>Take one lesson and plan its video, page, and checklist versions without changing the core point.</p>
+      </div>
+      <div class="foot"><span class="brand">aiwithenoch.com</span><span class="pg"></span><span class="series">The reach</span></div>
+    </section>
+
+<section class="sheet bb">
+      <h2 class="sr">Durable memory saves a project's decision, current state, and next step so the next session can continue without starting from zero.</h2>
+      <div class="tab"></div>
+      <div class="top">
+        <div class="eyebrow"><b>AI With Enoch</b> · No. 08</div>
+        <span class="pill">Knowledge</span>
+      </div>
+      <h1 class="title">Memory is infrastructure</h1>
+      <div class="sub">Make context survive the conversation</div>
+      <hr class="rule">
+      <div class="diagram">
+        <svg width="100%" viewBox="0 0 592 176" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A conversation becomes durable memory, which gives the next session a better starting point.">
+          <defs>
+            <marker id="ar8" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+            <filter id="cs8" x="-20%" y="-25%" width="140%" height="160%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#1A1A2E" flood-opacity="0.07"/></filter>
+          </defs>
+          <rect x="24" y="60" width="150" height="54" rx="12" fill="#FFFFFF" stroke="#E7E9EF" stroke-width="1" filter="url(#cs8)"/>
+          <text x="99" y="83" text-anchor="middle" style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;fill:#1A1A2E">Conversation</text>
+          <text x="99" y="98" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:#5B6472">decisions happen</text>
+          <rect x="221" y="60" width="150" height="54" rx="12" fill="#EEF0FE" stroke="#D5D8FA" stroke-width="1" filter="url(#cs8)"/>
+          <text x="296" y="83" text-anchor="middle" style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;fill:#4F46E5">Durable memory</text>
+          <text x="296" y="98" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:#6366F1">context stays</text>
+          <rect x="418" y="60" width="150" height="54" rx="12" fill="#ECFBF7" stroke="#CDEFE8" stroke-width="1" filter="url(#cs8)"/>
+          <text x="493" y="83" text-anchor="middle" style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;fill:#0D9488">Next session</text>
+          <text x="493" y="98" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:#5B6472">starts closer</text>
+          <line x1="174" y1="87" x2="221" y2="87" stroke="#94A3B8" stroke-width="1.75" marker-end="url(#ar8)"/>
+          <line x1="371" y1="87" x2="418" y2="87" stroke="#0D9488" stroke-width="1.75" marker-end="url(#ar8)"/>
+          <circle cx="198" cy="87" r="11" fill="#6366F1"/><text x="198" y="87" text-anchor="middle" dominant-baseline="central" style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;fill:#FFFFFF">1</text>
+          <circle cx="395" cy="87" r="11" fill="#6366F1"/><text x="395" y="87" text-anchor="middle" dominant-baseline="central" style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;fill:#FFFFFF">2</text>
+          <text x="296" y="151" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:12.5px;fill:#5B6472">Save the decision · keep the current state · name the next step</text>
+        </svg>
+      </div>
+      <hr class="rule">
+      <div class="explain">
+        <p>Let's say a project continues tomorrow. If its decisions and next steps live only in yesterday's chat, <span class="bad">the work starts by re-explaining itself</span>.</p>
+        <p>You asked for durable context so ongoing work can continue without that cost. <span class="hl">Save the decision, the current state, and the next step</span>, and the next session starts closer to the work.</p>
+        <p class="close">Memory isn't decoration. It's continuity.</p>
+      </div>
+      <div class="ask">
+        <span class="lbl">TELL THE AI</span>
+        <p>Save the decision, the current state, and the next step where I can search them later.</p>
+      </div>
+      <div class="foot"><span class="brand">aiwithenoch.com</span><span class="pg"></span><span class="series">The reach</span></div>
+    </section>
+
+<section class="sheet bb">
+      <h2 class="sr">Enoch's public proof includes Tech Creator of the Year at the 2025 Ghana Creators Awards, Parliament AI training, and 24 HOURS OF AI training 6,371 people.</h2>
+      <div class="tab"></div>
+      <div class="top">
+        <div class="eyebrow"><b>AI With Enoch</b> · No. 09</div>
+        <span class="pill">Recognition</span>
+      </div>
+      <h1 class="title">Proof in public</h1>
+      <div class="sub">Let completed work carry the claim</div>
+      <hr class="rule">
+      <div class="diagram">
+        <svg width="100%" viewBox="0 0 592 176" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Completed work becomes public proof, and public proof becomes trust.">
+          <defs>
+            <marker id="ar9" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+            <filter id="cs9" x="-20%" y="-25%" width="140%" height="160%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#1A1A2E" flood-opacity="0.07"/></filter>
+          </defs>
+          <rect x="24" y="60" width="150" height="54" rx="12" fill="#FFFFFF" stroke="#E7E9EF" stroke-width="1" filter="url(#cs9)"/>
+          <text x="99" y="83" text-anchor="middle" style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;fill:#1A1A2E">Work done</text>
+          <text x="99" y="98" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:#5B6472">something real</text>
+          <rect x="221" y="60" width="150" height="54" rx="12" fill="#EEF0FE" stroke="#D5D8FA" stroke-width="1" filter="url(#cs9)"/>
+          <text x="296" y="83" text-anchor="middle" style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;fill:#4F46E5">Proof shown</text>
+          <text x="296" y="98" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:#6366F1">people can inspect it</text>
+          <rect x="418" y="60" width="150" height="54" rx="12" fill="#ECFBF7" stroke="#CDEFE8" stroke-width="1" filter="url(#cs9)"/>
+          <text x="493" y="83" text-anchor="middle" style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;fill:#0D9488">Trust grows</text>
+          <text x="493" y="98" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:#5B6472">the claim has weight</text>
+          <line x1="174" y1="87" x2="221" y2="87" stroke="#94A3B8" stroke-width="1.75" marker-end="url(#ar9)"/>
+          <line x1="371" y1="87" x2="418" y2="87" stroke="#0D9488" stroke-width="1.75" marker-end="url(#ar9)"/>
+          <circle cx="198" cy="87" r="11" fill="#6366F1"/><text x="198" y="87" text-anchor="middle" dominant-baseline="central" style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;fill:#FFFFFF">1</text>
+          <circle cx="395" cy="87" r="11" fill="#6366F1"/><text x="395" y="87" text-anchor="middle" dominant-baseline="central" style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;fill:#FFFFFF">2</text>
+          <text x="296" y="151" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:12.5px;fill:#5B6472">Work first · proof next · trust follows</text>
+        </svg>
+      </div>
+      <hr class="rule">
+      <div class="explain">
+        <p>Let's say someone asks what you can do. A promise is easy to make, but <span class="bad">it gives them nothing solid to inspect</span>.</p>
+        <p>Your public proof includes <strong>Tech Creator of the Year at the 2025 Ghana Creators Awards</strong>, public evidence of Parliament AI training, and a 24 HOURS OF AI run that trained <span class="good">6,371 people</span>. The point is not to collect badges. It is to let <span class="hl">finished work speak before the pitch</span>.</p>
+        <p class="close">Show the work. Then make the claim.</p>
+      </div>
+      <div class="ask">
+        <span class="lbl">TELL THE AI</span>
+        <p>Keep a simple record of the work I complete, the people I help, and the proof I can show.</p>
+      </div>
+      <div class="foot"><span class="brand">aiwithenoch.com</span><span class="pg"></span><span class="series">The reach</span></div>
+    </section>
+
+    <section class="sheet gp index">
+      <div class="in">
+        <div class="gp-top">
+          <div class="gp-tab"></div>
+          <span class="gp-pill">Index</span>
+        </div>
+        <h1 class="lp-title">Index</h1>
+        <hr class="gp-rule">
+        <div class="idx">
+            <div class="idx-row"><span class="nm">24 HOURS OF AI</span><span class="pg">7</span></div>
+            <div class="idx-row"><span class="nm">AI With Enoch</span><span class="pg">5</span></div>
+            <div class="idx-row"><span class="nm">Automate the repeat</span><span class="pg">10</span></div>
+            <div class="idx-row"><span class="nm">Build what repeats</span><span class="pg">11</span></div>
+            <div class="idx-row"><span class="nm">Classroom system</span><span class="pg">9</span></div>
+            <div class="idx-row"><span class="nm">Memory is infrastructure</span><span class="pg">14</span></div>
+            <div class="idx-row"><span class="nm">One idea, many formats</span><span class="pg">13</span></div>
+            <div class="idx-row"><span class="nm">Practical AI</span><span class="pg">6</span></div>
+            <div class="idx-row"><span class="nm">Proof in public</span><span class="pg">15</span></div>
+          </div>
+        <div class="gp-foot"><span>aiwithenoch.com</span><span>The Work Behind AI With Enoch</span></div>
+      </div>
+    </section>
+
+
+  </main>
+  <script src="../../engine/sheet-tools.js"></script>
+</body>
+</html>
